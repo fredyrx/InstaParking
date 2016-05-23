@@ -1,0 +1,146 @@
+<h1>Buscar</h1>
+
+<div class="row" style="margin-button:10px;">
+  
+<form>
+      
+      <div class="col-md-6">
+                                            <div class="form-group">
+                                        <label for="category">
+                                            Distrito</label>
+                                        <select class="form-control" id="category">
+                                            <option>Barranco</option>
+                                            <option>Lima</option>
+                                            <option>Surco</option>
+                                            <option>Miraflores</option>
+                                            <option>San borja</option>
+                                            <option>Chorrillos</option>
+                                        </select>
+                                    </div>
+                                    
+                                        <strong>Otras opciones:</strong>
+                                        <div class="checkbox">
+                                          <label>
+                                            <input type="checkbox" value="">
+                                            con cámaras de seguridad
+                                          </label>
+                                        </div>
+                                        <div class="checkbox">
+                                          <label>
+                                            <input type="checkbox" value="">
+                                            con alarmas de seguridad
+                                          </label>
+                                        </div>
+                                        <div class="checkbox">
+                                          <label>
+                                            <input type="checkbox" value="">
+                                            con más de un personal de seguridad
+                                          </label>
+                                        </div>          
+          
+      </div>
+  
+      <div class="col-md-6">
+        
+  <div class="form-group">
+    <label for="exampleInputEmail1">Fecha</label>
+    <input type="date" class="form-control" id="exampleInputEmail1" placeholder="Email">
+  </div>
+  <div class="form-group">
+    <label for="inicio">Hora inicio</label>
+    <input type="time" class="form-control" id="inicio" placeholder="inicio">
+  </div>
+  <div class="form-group">
+    <label for="fin">Hora fin</label>
+    <input type="time" class="form-control" id="fin" placeholder="fin">
+  </div>
+  
+      </div>
+
+  <a type="button" class="btn btn-lg btn-success" onclick="$('#resultados').addClass('show');">Tendré suerte</a>
+</form>
+
+<!--
+  <div class="col-lg-12">
+    <div class="input-group input-group-lg">
+      <input type="text" class="form-control" placeholder="Ingresa el lugar donde necesitas el estacionamiento ">
+      <span class="input-group-btn">
+        <a href="/buscar" class="btn btn-success" type="button">Go!</a>
+      </span>
+    </div>
+  </div>
+ --> 
+</div>
+
+ <div class="row hide" style="margin-top:10px; border-top:1px solid #000;padding-top:10px;" id="resultados">
+     
+          <div class="col-lg-4">
+            <div class="col-xs-4 col-sm-4">
+              <figure>
+                  <a href="/rentar">
+                <img class="img-circle img-responsive" alt="" src="http://www.centroespecialempleo.info/archivos/parking_avenida.jpg">
+                </a>
+                <a href="https://www.google.com.pe/maps/@-12.1131233,-76.9554644,14z">Ver ubicación</a>
+                <a type="button" class="btn btn-info" href="/rentar">Rentar</a>
+              </figure>
+            </div>
+            <div class="col-xs-12 col-sm-8">
+              <ul class="list-group">
+                <li class="list-group-item">Estacionamiento longoria</li>
+                <li class="list-group-item">08:00 AM - 10:00 PM</li>
+                <li class="list-group-item">S/.10 x HORA</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="col-lg-4">
+            <div class="col-xs-4 col-sm-4">
+              <figure>
+                <img class="img-circle img-responsive" alt="" src="https://www.parkapp.com/blog/wp-content/uploads/2015/06/parking-Bilbao.jpg">
+                <a href="https://www.google.com.pe/maps/@-12.1131233,-76.9554644,14z">Ver ubicación</a>
+                <a type="button" class="btn btn-info" href="/rentar">Rentar</a>            
+              </figure>
+            </div>
+            <div class="col-xs-12 col-sm-8">
+              <ul class="list-group">
+                <li class="list-group-item">Estacionamiento longoria</li>
+                <li class="list-group-item">08:00 AM - 10:00 PM</li>
+                <li class="list-group-item">S/.10 x HORA</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="col-lg-4">
+            <div class="col-xs-4 col-sm-4">
+              <figure>
+                <img class="img-circle img-responsive" alt="" src="http://static1.squarespace.com/static/54aecfdce4b097616fb403f4/t/553eca3ee4b03271803a8921/1430178408450/parking-lot.jpg?format=1500w">
+                <a href="https://www.google.com.pe/maps/@-12.1131233,-76.9554644,14z">Ver ubicación</a>
+                <a type="button" class="btn btn-info" href="/rentar">Rentar</a>
+              </figure>
+            </div>
+            <div class="col-xs-12 col-sm-8">
+              <ul class="list-group">
+                <li class="list-group-item">Estacionamiento longoria</li>
+                <li class="list-group-item">08:00 AM - 10:00 PM</li>
+                <li class="list-group-item">S/.10 x HORA</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="col-lg-4">
+            <div class="col-xs-4 col-sm-4">
+              <figure>
+                <img class="img-circle img-responsive" alt="" src="http://www.regentparking.co.uk/imgs/slide-1.jpg">
+                <a href="https://www.google.com.pe/maps/@-12.1131233,-76.9554644,14z">Ver ubicación</a>
+                <a type="button" class="btn btn-info" href="/rentar">Rentar</a>
+              </figure>
+            </div>
+            <div class="col-xs-12 col-sm-8">
+              <ul class="list-group">
+                <li class="list-group-item">Estacionamiento longoria</li>
+                <li class="list-group-item">08:00 AM - 10:00 PM</li>
+                <li class="list-group-item">S/.10 x HORA</li>
+              </ul>
+            </div>
+          </div>
+</div>
