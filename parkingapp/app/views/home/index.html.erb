@@ -48,51 +48,19 @@
       <div class="row text-center">
               <p class=""> <h2>DISTRITOS MÁS BUSCADOS</h2></p>
       </div>
-            
-  <div class="col-lg-3 text-center" >
-          <a class="" href="/buscar">
-            <img style="position: relative;width: 100%;" class="image-seo full" src="https://www.parkingpanda.com/cdn/images/seo/banners/city-header-new-orleans.png;format=jpg;w=300;h=300;mode=crop;quality=85" alt="Miraflores Parking">
+      
+      <% @districts.each do |d| %>      
+      <div class="col-lg-3 text-center" style="margin-bottom:20px;" >
+          <a class="" href="/parking_lots/search?district_id=<%= d.id %>">
+            <img style="position: relative;width: 100%;" width="300px" height="300px"  class="image-seo full" src="<%= d.photo %>" alt="<%= d.photo %>">
               <span class="">
                 <span class="" style="color: white;font: bold 24px/45px Helvetica, Sans-Serif;background: rgba(0, 0, 0, 0.7);">
-                <h4 class="" style="position: absolute; top: 200px; width: 100%;">Miraflores</h4>
+                <h4 class="" style="position: absolute; top: 200px; width: 100%;"><%= d.description %></h4>
                 </span>
               </span>
           </a>
-        </div>
+      </div>
+      <% end %>
 
-        <div class="col-lg-3 text-center" >
-          <a class="" href="/buscar">
-            <img style="position: relative;width: 100%;" class="image-seo full" src="https://www.parkingpanda.com/cdn/images/seo/banners/city-header-new-york.png;format=jpg;w=300;h=300;mode=crop;quality=85" alt="surco Parking">
-              <span class="">
-                <span class="" style="color: white;font: bold 24px/45px Helvetica, Sans-Serif;background: rgba(0, 0, 0, 0.7);">
-                <h4 class="" style="position: absolute; top: 200px; width: 100%;">Surco</h4>
-                </span>
-              </span>
-          </a>
-        </div>
-
-        <div class="col-lg-3 text-center" >
-          <a class="" href="/buscar">
-            <img style="position: relative;width: 100%;" class="image-seo full" src="https://www.parkingpanda.com/cdn/images/seo/banners/city-header-atlanta.png;format=jpg;w=300;h=300;mode=crop;quality=85" alt="san borja Parking">
-              <span class="">
-                <span class="" style="color: white;font: bold 24px/45px Helvetica, Sans-Serif;background: rgba(0, 0, 0, 0.7);">
-                <h4 class="" style="position: absolute; top: 200px; width: 100%;">San Borja</h4>
-                </span>
-              </span>
-          </a>
-        </div>
-
-        <div class="col-lg-3 text-center" >
-          <a class="" href="/buscar">
-            <img style="position: relative;width: 100%;" class="image-seo full" src="https://www.parkingpanda.com/cdn/images/seo/banners/city-header-san-francisco.png;format=jpg;w=300;h=300;mode=crop;quality=85" alt="barranco Parking">
-              <span class="">
-                <span class="" style="color: white;font: bold 24px/45px Helvetica, Sans-Serif;background: rgba(0, 0, 0, 0.7);">
-                <h4 class="" style="position: absolute; top: 200px; width: 100%;">Barranco</h4>
-                </span>
-              </span>
-          </a>
-        </div>
-
-        
       </div>
 

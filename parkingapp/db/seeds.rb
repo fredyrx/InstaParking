@@ -5,3 +5,12 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+distritos = District.create(
+    [
+        {'description':'Barranco','photo':'https://www.parkingpanda.com/cdn/images/seo/banners/city-header-san-francisco.png;format=jpg;w=300;h=300;mode=crop;quality=85'},
+        {'description':'Miraflores','photo':'https://www.parkingpanda.com/cdn/images/seo/banners/city-header-new-orleans.png;format=jpg;w=300;h=300;mode=crop;quality=85'},
+        {'description':'Surco','photo':'https://www.parkingpanda.com/cdn/images/seo/banners/city-header-new-york.png;format=jpg;w=300;h=300;mode=crop;quality=85'},
+        {'description':'San borja','photo':'https://www.parkingpanda.com/cdn/images/seo/banners/city-header-atlanta.png;format=jpg;w=300;h=300;mode=crop;quality=85'}
+    ]
+)

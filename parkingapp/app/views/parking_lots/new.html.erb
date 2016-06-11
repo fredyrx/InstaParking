@@ -1,0 +1,93 @@
+<div class="col-md-6 col-md-offset-3">
+<fieldset>
+      <div id="legend">
+      <legend class="">
+        <h2>Ofertar mi Parking lot</h2>
+      </legend>
+    </div>    
+
+<%= form_for(@parking) do |f| %>
+
+  <div class="control-group">
+    <%= f.label :description, :class => "control-label" %><br />
+    <%= f.text_field :description, autofocus: true, :class => "form-control" %>
+  </div>
+  
+  <div class="control-group">
+    <%= f.label :price, :class => "control-label" %><br />
+    <%= f.number_field :price, autofocus: true, :class => "form-control" %>
+  </div>
+  
+  <div class="control-group">
+    <%= f.label :spaces, :class => "control-label" %><br />
+    <%= f.number_field :spaces, autofocus: true, :class => "form-control" %>
+  </div>
+  
+  <div class="control-group">
+    <%= f.label :opening_time, :class => "control-label" %><br />
+    <%= f.time_field :opening_time, autofocus: true, :class => "form-control" %>
+  </div>
+  
+  <div class="control-group">
+    <%= f.label :closing_time, :class => "control-label" %><br />
+    <%= f.time_field :closing_time, autofocus: true, :class => "form-control" %>
+  </div>
+  
+  
+  <div class="control-group">
+    <%= f.label :district, :class => "control-label" %><br />
+    <%= f.select :district_id, @districts.map { |p| [p.description, p.id] }, {:class => "form-control"} %>
+  </div>
+  
+  <div class="control-group">
+    <%= f.label "has_security_cameras" %> <br />
+    <%= f.check_box :has_security_cameras  %> <br />
+</div>
+  <div class="control-group">
+    <%= f.label "has_security_alarms" %> <br />
+    <%= f.check_box :has_security_alarms  %> <br />
+</div>
+  <div class="control-group">
+    <%= f.label "has_security_persons" %> <br />
+    <%= f.check_box :has_security_persons  %> <br />
+</div>
+  <div class="control-group">
+    <%= f.label "has_supermarkets_close" %> <br />
+    <%= f.check_box :has_supermarkets_close  %> <br />
+</div>
+  <div class="control-group">
+    <%= f.label "has_restaurants_close" %> <br />
+    <%= f.check_box :has_restaurants_close  %> <br />
+</div>
+  <div class="control-group">
+    <%= f.label "has_cinemas_close" %> <br />
+    <%= f.check_box :has_cinemas_close  %> <br />
+</div>
+  
+  
+  <div class="control-group">
+    <%= f.label :photo, :class => "control-label" %><br />
+    <%= f.text_field :photo, autofocus: true, :class => "form-control" %>
+  </div>
+  
+  
+  <% if @parking.errors.any? %>
+  <div id="errors">
+    <% @parking.errors.full_messages.each do |msg| %>
+    <p class="text text-warning"> <%= msg %> </p>
+    <% end %>
+  </div>
+<% end %>
+
+</br>
+    <div class="control-group">
+      <div class="controls">
+      <%= f.submit  :class => "btn btn-success" %>
+      </div>
+    </div>
+
+<% end %>
+
+
+</fieldset>
+</div>

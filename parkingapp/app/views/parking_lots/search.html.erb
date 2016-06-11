@@ -1,0 +1,52 @@
+<h2>busqueda</h2>
+
+<form action="/parking_lots/result" methods="GET" class="form-inline">
+    <div class="form-group">
+        <label class="" for="parking_lot_district">District </label>
+        <select name="district_id" id="parking_lot_district_id" class="form-control">
+            <% @districts.each do |d|  %>
+                <option value="<%= d.id %>" <%if d.id == @default %> selected='true' <% end %>  ><%= d.description %></option>
+            <% end %>
+        </select>
+    </div>
+    
+    <div class="form-group">
+    <label class="" for="date">DATE</label>
+    <input class="form-control" type="date" name="date" id="date" required="true">
+    </div>   
+    
+  
+    <div class="form-group">
+    <label class="" for="start_time">start time</label>
+    <input class="form-control" type="time" name="start_time" id="start_time" required="true">
+    </div>    
+    
+    <div class="form-group">
+    <label class="" for="end_time">start time</label>
+    <input  class="form-control" type="time" name="end_time" id="end_time" required="true">
+    </div>
+  
+  </br>
+    
+    <div class="checkbox">
+            <label for="cameras">Has security cameras
+            <input name="cameras" type="checkbox" value="1"  id="cameras">   
+            </label>
+    </div>    
+    <div class="checkbox">
+            <label for="alarms">Has security alarms
+            <input name="alarms" type="checkbox" value="1"  id="alarms">   
+            </label>
+    </div>    
+    <div class="checkbox">
+            <label for="persons">Has security persons
+            <input name="persons" type="checkbox" value="1"  id="persons">   
+            </label>
+    </div>
+  
+  </br>
+  </br>
+    <button type="submit" class="btn btn-info" >Dentré suerte</button>
+</form>
+
+</br>

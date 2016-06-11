@@ -23,6 +23,13 @@
 </head>
 <body>
 
+<% flash.each do |key, value| %>
+    <div class="alert alert-<%= key %> alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <%= value %>
+    </div>
+<% end %>
+
 <div class="container">
 
   <!-- 
@@ -36,27 +43,33 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
             <li class="<%=  @home_class %>"><a href="/">Home</a></li>
-              <li class="<%=  @buscar_class %>"><a href="/buscar">Buscar</a></li>
+            <li class="<%=  @buscar_class %>"><a href="/parking_lots/search">Buscar</a></li>
             
-             <% if session[:usuario] %>  
-            <li class="<%=  @ofertar_class %>"><a href="/ofertar">Ofertar</a></li>
+                  
+            <% if user_signed_in? %>
+              <li class="<%=  @ofertar_class %>"><a href="/parking_lots">Ofertar</a></li>
+            <% else %>
+              <li class="<%=  @ofertar_class %>"><a href="/parking_lots/new">Ofertar</a></li>
             <% end %>
                         
-             <% if session[:usuario] == 'admin' %>  
-            <li class="<%=  @administrar_class %>"><a href="/admin">Administrar</a></li>
-            <% end %>
-            
             <li class="<%=  @faq_class %>"><a href="/faq">FAQ</a></li>
             <li class="<%=  @quienessomos_class %>"><a href="/quienessomos">Quienes Somos</a></li>
             <li class="<%=  @contacto_class %>"><a href="/contacto">Contacto</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <% if not session[:usuario] %>
-        <li class="<%=  @login_class %>"><a href="/login">Login</a></li>
-      <% end %>
-        <% if session[:usuario] %>
-        <li ><a href="/logout">Logout</a></li>
-      <% end %>      
+                    <!-- -->
+            <% if user_signed_in? %>
+              <li> <a href="#">Bienvenido <%= current_user.name  %> </a></li>            
+              <li > <%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
+            
+            <% else %>
+              
+            
+              <li><%= link_to "Sign In", new_user_session_path, :method => :get %></li>
+              <li><%= link_to "Sign up", new_user_registration_path, :method => :get %></li>
+            
+            <% end %>
+            <!-- -->
             
         </ul>
     </div><!-- /.navbar-collapse -->

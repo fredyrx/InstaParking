@@ -1,0 +1,29 @@
+<h2>Ofertas de Parkings</h2>
+<a href="/parking_lots/new" >Add Parking Lot</a>
+<table class="table table-hovered table-bordered">
+    <thead>
+    <tr>
+        <th>name</th>
+        <th>Description</th>
+        <th>District</th>
+        <th>price</th>
+        <th>total spaces</th>
+        <th>available spaces</th>
+        <th>Actions</th>
+    </tr>        
+    </thead>
+    <tbody>
+    <% @parkings.each do |parking| %>    
+    <tr>
+        <td><%= parking.name %></td>
+        <td><%= parking.description %></td>
+        <td><%= parking.district.description %></td>
+        <td><%= parking.price %></td>
+        <td><%= parking.spaces %></td>
+        <td><%= parking.spaces %></td>
+        <td><a href="/parking_lots/<%= parking.id %>"> Ver </a> </td>
+    </tr>
+    <% end %>
+    </tbody>
+    
+</table>

@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
   def index
     @home_class = 'active'
+    @districts = District.all
   end
   
   def faq

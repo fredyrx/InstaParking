@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  devise_for :users
   get 'rentar/pagar'
 
   get 'account/login'
@@ -22,7 +23,12 @@ Rails.application.routes.draw do
   get 'rentar/pagado' => 'rentar#pagado'
   get 'logout' => 'account#logout'
   
-
+  
+  get 'parking_lots/search' => 'parking_lots#search'
+  get 'parking_lots/result' => 'parking_lots#result'
+  
+  resources :districts
+  resources :parking_lots
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

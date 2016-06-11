@@ -1,0 +1,39 @@
+<h2>Parkings lot results</h2>
+
+
+
+ <div class="row" style="margin-top:10px; border-top:1px solid #000;padding-top:10px;" id="resultados">
+   <% unless @parkings.empty? %>
+    <% @parkings.each do | p| %>
+
+          <div class="col-lg-4">
+            <div class="col-xs-4 col-sm-4">
+              <figure>
+                  <a href="/rentar">
+                <img class="img-circle img-responsive" alt="" src="<%= p.photo %>">
+                </a>
+                <a href="https://www.google.com.pe/maps/@-12.1131233,-76.9554644,14z">Ver ubicación</a>
+                <a type="button" class="btn btn-info" href="/rentar">Rentar</a>
+              </figure>
+            </div>
+            <div class="col-xs-12 col-sm-8">
+              <ul class="list-group">
+                <li class="list-group-item"><%=p.description %></li>
+                <li class="list-group-item">
+                   <%= p.opening_time.strftime('%r') %> - <%=p.closing_time.strftime('%r') %></li>
+                <li class="list-group-item">
+                   <%= p.has_supermarkets_close %> | <%=p.has_cinemas_close %> | <%=p.has_restaurants_close %> 
+                   </li>
+                <li class="list-group-item">S/.<%=p.price %> x HORA</li>
+                <li class="list-group-item">Costo total: S/. <%= (@minutes*(p.price/60.0)).round(2) %> </li>
+              </ul>
+            </div>
+          </div>
+<% end %>
+
+<% else %>
+  <div class="alert alert-info">
+    <p class="text text-info"> No se encontraron parking lots disponibles </p>
+  </div>
+<% end %>
+</div>
