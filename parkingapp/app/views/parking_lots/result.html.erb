@@ -1,9 +1,8 @@
-<h2>Parkings lot results</h2>
-
-
+<h2>Estacionamientos encontrados</h2>
 
  <div class="row" style="margin-top:10px; border-top:1px solid #000;padding-top:10px;" id="resultados">
    <% unless @parkings.empty? %>
+   <p><%=  @parkings.count %> encontrados </p>
     <% @parkings.each do | p| %>
 
           <div class="col-lg-4">
@@ -13,16 +12,23 @@
                 <img class="img-circle img-responsive" alt="" src="<%= p.photo %>">
                 </a>
                 <a href="https://www.google.com.pe/maps/@-12.1131233,-76.9554644,14z">Ver ubicación</a>
-                <a type="button" class="btn btn-info" href="/rentar">Rentar</a>
+                <a type="button" class="btn btn-info" 
+                href="/rents/new?rent[total_minutes]=<%=@minutes%>&rent[parking_lot_id]=<%=p.id%>&rent[date]=<%=@date%>&rent[start_time]=<%=@start_time%>&rent[end_time]=<%=@end_time%>">
+                  Rentar
+                </a>
               </figure>
             </div>
             <div class="col-xs-12 col-sm-8">
               <ul class="list-group">
-                <li class="list-group-item"><%=p.description %></li>
+                <li class="list-group-item"><%=p.name %></li>
                 <li class="list-group-item">
                    <%= p.opening_time.strftime('%r') %> - <%=p.closing_time.strftime('%r') %></li>
                 <li class="list-group-item">
-                   <%= p.has_supermarkets_close %> | <%=p.has_cinemas_close %> | <%=p.has_restaurants_close %> 
+                   <% if p.has_supermarkets_close %> <i class="glyphicon glyphicon-shopping-cart"></i> <% end %>
+                   
+                   <% if p.has_cinemas_close %> <i class="glyphicon glyphicon-facetime-video"></i> <% end %>
+                   
+                   <% if p.has_restaurants_close %> <i class="glyphicon glyphicon-cutlery"></i> <% end %> 
                    </li>
                 <li class="list-group-item">S/.<%=p.price %> x HORA</li>
                 <li class="list-group-item">Costo total: S/. <%= (@minutes*(p.price/60.0)).round(2) %> </li>

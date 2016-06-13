@@ -1,0 +1,15 @@
+
+<h2> Resumen de ganancias totales por alquileres </h2>
+<table class="table table-bordered">
+    <tr>
+        <th>Estacionamiento</th>
+        <th>Monto alcanzado</th>
+    </tr>
+    <% @parkings.each do |p| %>    
+    <tr>
+        <td> <%= p.name %> </td>
+        <td>s/. <%= calcular_ganancia_total(p.id) %>  </td>
+        
+    </tr>
+    <% end %>
+</table>

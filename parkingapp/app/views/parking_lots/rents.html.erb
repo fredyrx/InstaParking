@@ -1,0 +1,30 @@
+<h2> Historial de alquileres de Estacionamiento "<%= @parking.name %>"</h2>
+<% if @parking.rents.all.count  > 0 %>
+<table class="table table-bordered">
+    <tr>
+        <th>Fecha</th>
+        <th>Hora inicio</th>
+        <th>Hora Hora fin</th>
+        <th>Tiempo total</th>
+        <th>Cliente</th>
+        <th>Costo</th>
+        <th></th>
+    </tr>
+    
+    <% @parking.rents.all.each do |r|%>
+    <tr>
+        <td><%= r.date %></td>
+        <td><%= r.start_time.strftime('%r') %></td>
+        <td><%= r.end_time.strftime('%r') %></td>
+        <td><%= r.total_minutes %> mins</td>
+        <td><%= r.user.name %> <%= r.user.lastname %></td>
+        <td> s/. <%= r.total_price %></td>
+        <td> <a href="/rents/<%= r.id %>">Ver</a></td>
+    </tr>
+    <% end %>
+</table>
+<% else %>
+<div class="alert alert-info">
+    No se rentó ningún espacio hasta el momento.
+</div>
+<% end %>

@@ -1,0 +1,138 @@
+<div class="col-md-12">
+<fieldset>
+      <div id="legend">
+      <legend class="">
+        <strong> Ofertar/Publicar </strong> mi estacionamiento
+      </legend>
+    </div>    
+
+<%= form_for(@rent) do |f| %>
+
+<div class="row">
+
+<!-- Credit card form -->
+    <div class="row">
+        <div class="col-xs-12 col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><img class="pull-right" src="http://i76.imgup.net/accepted_c22e0.png">Detalle pago</h3>
+                </div>
+                <div class="panel-body">
+                        <div class="row">
+                            <table class="table table-bordered">
+                                <tr>    
+                                    <th>Estacionamiento</th> 
+                                    <th>Tiempo</th> 
+                                    <th>Costo</th> 
+                                </tr>
+                                <tr>    
+                                    <td><%= @rent.parking_lot.name %></td> 
+                                    <td><%= @rent.total_minutes %> minutos</td> 
+                                    <td>S/.  <%= @rent.total_price %></td> 
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <label for="cardNumber">Número de tarjeta</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" name="cardNumber" placeholder="Valid Card Number" required autofocus data-stripe="number" />
+                                        <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
+                                    </div>
+                                </div>                            
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-7 col-md-7">
+                                <div class="form-group">
+                                    <label for="expMonth">Fecha de expiración</label>
+                                    <div class="col-xs-6 col-lg-6 pl-ziro">
+                                        <input type="text" class="form-control" name="expMonth" placeholder="MM" required data-stripe="exp_month" />
+                                    </div>
+                                    <div class="col-xs-6 col-lg-6 pl-ziro">
+                                        <input type="text" class="form-control" name="expYear" placeholder="YY" required data-stripe="exp_year" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-5 col-md-5 pull-right">
+                                <div class="form-group">
+                                    <label for="cvCode">CÓDIGO CV</label>
+                                    <input type="password" class="form-control" name="cvCode" placeholder="CV" required data-stripe="cvc" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <button typw="submit" class="btn btn-success btn-lg btn-block">Realizar pago</a>
+                            </div>
+                        </div>
+                        <div class="row" style="display:none;">
+                            <div class="col-xs-12">
+                                <p class="payment-errors"></p>
+                            </div>
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+</div>
+<!-- end seudo form -->
+
+
+<div class="hidden">
+<div class="col-md-6">
+
+    <div class="control-group">
+      <%= f.label :parking_lot_id, :class => "control-label", :value => "parking_lot_id" %>
+      <%= f.text_field :parking_lot_id, autofocus: true, :class => "form-control", :readonly => true %>
+    </div>
+    <div class="control-group">
+      <%= f.label :date, :class => "control-label", :value => "Fecha" %>
+      <%= f.date_field :date, autofocus: true, :class => "form-control" %>
+    </div>
+    <div class="control-group">
+      <%= f.label :start_time, :class => "control-label", :value => "Inicio" %>
+      <%= f.time_field :start_time, autofocus: true, :class => "form-control" %>
+    </div>
+    <div class="control-group">
+      <%= f.label :end_time, :class => "control-label", :value => "Fin" %>
+      <%= f.time_field :end_time, autofocus: true, :class => "form-control" %>
+    </div>
+
+</div>
+<div class="col-md-6">
+  
+  <div class="control-group">
+    <%= f.label :total_minutes, :class => "control-label" %><br />
+    <%= f.text_field :total_minutes, autofocus: true, :class => "form-control", :readonly => true %>
+  </div>
+    
+  <div class="control-group">
+    <%= f.label :total_price, :class => "control-label" %><br />
+    <%= f.text_field :total_price, autofocus: true, :class => "form-control", :readonly => true %>
+  </div>
+  
+  </div>
+  </div>
+  
+  
+  <div class="row">
+    <% if @rent.errors.any? %>
+      <div id="errors">
+        <% @rent.errors.full_messages.each do |msg| %>
+        <p class="text text-warning"> <%= msg %> </p>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+ 
+
+<% end %>
+
+
+</fieldset>
+</div>

@@ -1,0 +1,33 @@
+<h1>Lista de alquileres de estacionamientos</h1>
+ 
+<table class="table table-hovered">
+  <tr>
+    <th>Id</th>
+    <th>Distrito</th>
+    <th>Estacionmiento</th>
+    <th>Cliente</th>
+    <th>Fecha</th>
+    <th>Tiempo</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+ 
+<% @rents.each do |rent| %>
+  <tr>
+    <td><%= rent.id %></td>
+    <td><%= rent.district.name %></td>
+    <td><%= rent.parking_lot %></td>
+    <td><%= rent.user.name %></td>
+    <td><%= rent.date %></td>
+    <td><%= rent.minutes %></td>
+    <td><%= link_to "Show", rent %></td>
+    <td><%= link_to "Edit", edit_rent_path(rent) %></td>
+    <td><%= link_to "Remove", rent, method: :delete, data: { confirm: "Are you sure?" } %></td>
+  </tr>
+<% end %>
+</table>
+ 
+<br>
+ 
+<%= link_to "New rent", new_rent_path %>

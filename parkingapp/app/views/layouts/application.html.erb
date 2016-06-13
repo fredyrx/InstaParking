@@ -17,18 +17,12 @@
 <!-- Optional theme -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 
+
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
 </head>
 <body>
-
-<% flash.each do |key, value| %>
-    <div class="alert alert-<%= key %> alert-dismissable">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-        <%= value %>
-    </div>
-<% end %>
 
 <div class="container">
 
@@ -43,12 +37,40 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
             <li class="<%=  @home_class %>"><a href="/">Home</a></li>
-            <li class="<%=  @buscar_class %>"><a href="/parking_lots/search">Buscar</a></li>
             
-                  
             <% if user_signed_in? %>
-              <li class="<%=  @ofertar_class %>"><a href="/parking_lots">Ofertar</a></li>
+              
+              <li class="dropdown">
+                <a href="" class="dropdown-toggle <%= @ofertar_class %>" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                  Ofertar 
+                  <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a href="/parking_lots/">Mis estacionamientos</a></li>
+                  <li><a href="/parking_lots/new">Publicar/Agregar estacionamiento</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a href="/parking_lots/sales">Reporte de ganancia total por estacionamiento</a></li>
+                </ul>
+            </li>         
+            
+              <li class="dropdown">
+                <a href="/parking_lots" class="dropdown-toggle <%=  @buscar_class %>" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                  Buscar 
+                  <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a href="/parking_lots/search">Buscar estacionamiento</a></li>
+                  <li><a href="/rents/history">Historial</a></li>
+                </ul>
+            </li>
+            
+            
+            <% if current_user.email == "admin@instaparking.com" %>
+              <li class="<%=  @admin_class %>"><a href="/districts">Admin</a></li>
+            <% end %>
+            
             <% else %>
+              <li class="<%=  @buscar_class %>"><a href="/parking_lots/search">Buscar</a></li>
               <li class="<%=  @ofertar_class %>"><a href="/parking_lots/new">Ofertar</a></li>
             <% end %>
                         
@@ -76,6 +98,14 @@
   </div><!-- /.container-fluid -->
 </nav>
   </div>
+  
+  <% flash.each do |key, value| %>
+    <div class="alert alert-info alert-<%= key %> alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <%= value %>
+    </div>
+<% end %>
+
   
       <% if flash[:mensaje] %>
         <div class="alert alert-info" role="alert">

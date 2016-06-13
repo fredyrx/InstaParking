@@ -26,9 +26,17 @@ Rails.application.routes.draw do
   
   get 'parking_lots/search' => 'parking_lots#search'
   get 'parking_lots/result' => 'parking_lots#result'
+  get '/parking_lots/:id/rents' => 'parking_lots#rents'
+  get '/parking_lots/sales' => 'parking_lots#sales'
+  get '/parking_lots/district' => 'parking_lots#by_district'
+  
+  get 'rents/history' => 'rents#history'
   
   resources :districts
   resources :parking_lots
+  resources :rents
+  
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

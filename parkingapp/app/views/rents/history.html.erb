@@ -1,0 +1,25 @@
+<h2>Historial de alquileres </h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Fecha</th>
+        <th>Hora inicio</th>
+        <th>Hora Hora fin</th>
+        <th>Estacionamiento</th>
+        <th>Tiempo total</th>
+        <th>Costo</th>
+        <th></th>
+    </tr>
+    
+    <% @rents.each do |r| %>
+    <tr>
+        <td><%= r.date %></td>
+        <td><%= r.start_time.strftime('%r') %></td>
+        <td><%= r.end_time.strftime('%r') %></td>
+        <td><% if r.parking_lot %> <%= r.parking_lot.name %> <% end %></td>
+        <td><%= r.total_minutes %> mins</td>
+        <td> s/. <%= r.total_price %></td>
+        <td> <a href="/rents/<%= r.id %>">Ver</a></td>
+    </tr>
+    <% end %>
+</table>

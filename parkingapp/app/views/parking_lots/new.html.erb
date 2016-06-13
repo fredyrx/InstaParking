@@ -1,84 +1,99 @@
-<div class="col-md-6 col-md-offset-3">
+<div class="col-md-12">
 <fieldset>
       <div id="legend">
       <legend class="">
-        <h2>Ofertar mi Parking lot</h2>
+        <strong> Ofertar/Publicar </strong> mi estacionamiento
       </legend>
     </div>    
 
 <%= form_for(@parking) do |f| %>
 
-  <div class="control-group">
-    <%= f.label :description, :class => "control-label" %><br />
-    <%= f.text_field :description, autofocus: true, :class => "form-control" %>
-  </div>
+<div class="col-md-6">
+
+    <div class="control-group">
+      <%= f.label :name, :class => "control-label", :value => "Nombre" %>
+      <%= f.text_field :name, autofocus: true, :class => "form-control" %>
+    </div>
+  
+    <div class="control-group">
+      <%= f.label :description, :class => "control-label", :value => "Descripción" %><br />
+      <%= f.text_field :description, :class => "form-control" %>
+    </div>
+    
+    <div class="control-group">
+      <%= f.label :price, :class => "control-label", :value => "Precio x hora" %><br />
+      <%= f.number_field :price,  :class => "form-control" %>
+    </div>
+    
+    <div class="control-group">
+      <%= f.label :spaces, :class => "control-label", :value => "Espacios" %>
+      <%= f.number_field :spaces,  :class => "form-control" %>
+    </div>
+    
+    <div class="control-group">
+      <%= f.label :opening_time, :class => "control-label", :value => "Hora de apertura" %><br />
+      <%= f.time_field :opening_time,  :class => "form-control", :value => "08:00" %>
+    </div>
+    
+    <div class="control-group">
+      <%= f.label :closing_time, :class => "control-label" , :value => "Hora de cierre"%><br />
+      <%= f.time_field :closing_time,  :class => "form-control", :value => "22:00" %>
+    </div>
+    
+</div>
+<div class="col-md-6">
   
   <div class="control-group">
-    <%= f.label :price, :class => "control-label" %><br />
-    <%= f.number_field :price, autofocus: true, :class => "form-control" %>
-  </div>
-  
-  <div class="control-group">
-    <%= f.label :spaces, :class => "control-label" %><br />
-    <%= f.number_field :spaces, autofocus: true, :class => "form-control" %>
-  </div>
-  
-  <div class="control-group">
-    <%= f.label :opening_time, :class => "control-label" %><br />
-    <%= f.time_field :opening_time, autofocus: true, :class => "form-control" %>
-  </div>
-  
-  <div class="control-group">
-    <%= f.label :closing_time, :class => "control-label" %><br />
-    <%= f.time_field :closing_time, autofocus: true, :class => "form-control" %>
-  </div>
-  
-  
-  <div class="control-group">
-    <%= f.label :district, :class => "control-label" %><br />
+    <%= f.label :district, :class => "control-label", :value => "Distrito" %><br />
     <%= f.select :district_id, @districts.map { |p| [p.description, p.id] }, {:class => "form-control"} %>
   </div>
   
+  <h4>Seguridad</h4>
   <div class="control-group">
-    <%= f.label "has_security_cameras" %> <br />
-    <%= f.check_box :has_security_cameras  %> <br />
+    <%= f.label "has_security_cameras" %> 
+    <%= f.check_box :has_security_cameras  %>
 </div>
   <div class="control-group">
-    <%= f.label "has_security_alarms" %> <br />
-    <%= f.check_box :has_security_alarms  %> <br />
+    <%= f.label "has_security_alarms" %> 
+    <%= f.check_box :has_security_alarms  %>
 </div>
   <div class="control-group">
-    <%= f.label "has_security_persons" %> <br />
-    <%= f.check_box :has_security_persons  %> <br />
+    <%= f.label "has_security_persons" %> 
+    <%= f.check_box :has_security_persons  %> 
+</div>
+<h4>Servicios cercanos</h4>
+  <div class="control-group">
+    <%= f.label "has_supermarkets_close" %> 
+    <%= f.check_box :has_supermarkets_close  %> 
 </div>
   <div class="control-group">
-    <%= f.label "has_supermarkets_close" %> <br />
-    <%= f.check_box :has_supermarkets_close  %> <br />
+    <%= f.label "has_restaurants_close" %> 
+    <%= f.check_box :has_restaurants_close  %> 
 </div>
   <div class="control-group">
-    <%= f.label "has_restaurants_close" %> <br />
-    <%= f.check_box :has_restaurants_close  %> <br />
-</div>
-  <div class="control-group">
-    <%= f.label "has_cinemas_close" %> <br />
-    <%= f.check_box :has_cinemas_close  %> <br />
+    <%= f.label "has_cinemas_close" %>
+    <%= f.check_box :has_cinemas_close  %> 
 </div>
   
   
   <div class="control-group">
     <%= f.label :photo, :class => "control-label" %><br />
-    <%= f.text_field :photo, autofocus: true, :class => "form-control" %>
+    <%= f.text_field :photo,  :class => "form-control" %>
+  </div>
+  
   </div>
   
   
-  <% if @parking.errors.any? %>
-  <div id="errors">
-    <% @parking.errors.full_messages.each do |msg| %>
-    <p class="text text-warning"> <%= msg %> </p>
+  <div class="row">
+    <% if @parking.errors.any? %>
+      <div id="errors">
+        <% @parking.errors.full_messages.each do |msg| %>
+        <p class="text text-warning"> <%= msg %> </p>
+        <% end %>
+      </div>
     <% end %>
   </div>
-<% end %>
-
+  
 </br>
     <div class="control-group">
       <div class="controls">

@@ -14,3 +14,9 @@ distritos = District.create(
         {'description':'San borja','photo':'https://www.parkingpanda.com/cdn/images/seo/banners/city-header-atlanta.png;format=jpg;w=300;h=300;mode=crop;quality=85'}
     ]
 )
+
+User.create(
+    [
+        {'name': 'admin', 'email':'admin@instaparking.com','lastname':'sistemas','password': '123456'}
+    ]
+    )

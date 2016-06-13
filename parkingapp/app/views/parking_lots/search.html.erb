@@ -1,8 +1,76 @@
-<h2>busqueda</h2>
+<h2>busqueda de estacionamiento</h2>
+
+
+<div class="row" style="margin-button:10px;">
+  
+<form action="/parking_lots/result" methods="GET">
+      <div class="col-md-6">
+          <div class="form-group">
+              <label for="district_id">
+              Distrito</label>
+                <select name="district_id" id="parking_lot_district_id" class="form-control">
+                <% @districts.each do |d|  %>
+                    <option value="<%= d.id %>" <%if d.id == @default %> selected='true' <% end %>  ><%= d.description %></option>
+                <% end %>
+                </select>
+            </div>
+                                    
+                <strong>Otras opciones:</strong>
+    <div class="checkbox">
+            <label for="cameras">
+            <input name="cameras" type="checkbox"  id="cameras">   
+            con cámaras de seguridad
+            </label>
+    </div>
+    
+    <div class="checkbox">
+            <label for="alarms">
+            <input name="alarms" type="checkbox"   id="alarms">   
+            Con alarmas de seguidad
+            </label>
+    </div>
+    
+    <div class="checkbox">
+            <label for="persons">
+            <input name="persons" type="checkbox"  id="persons">   
+            Con personal de seguridad
+            </label>
+    </div>
+      </div>
+  
+      <div class="col-md-6">
+        
+    <div class="form-group">
+    <label class="" for="date">Fecha</label>
+    <input class="form-control" type="date" name="date" id="date" required="true" value="<%= Date.today  %>">
+    </div>   
+    
+  
+    <div class="form-group">
+    <label class="" for="start_time">Desde</label>
+    <input class="form-control" type="time" name="start_time" id="start_time" required="true" value="08:00">
+    </div>    
+    
+    <div class="form-group">
+    <label class="" for="end_time">Hasta</label>
+    <input  class="form-control" type="time" name="end_time" id="end_time" required="true" value="10:00">
+    </div>
+
+      </div>
+<button type="submit" class="btn btn-lg btn-info" >Buscar</button>
+ 
+</form>
+ 
+</div>
+
+<!--
+
+
+</br>
 
 <form action="/parking_lots/result" methods="GET" class="form-inline">
     <div class="form-group">
-        <label class="" for="parking_lot_district">District </label>
+        <label class="" for="parking_lot_district">Distrito </label>
         <select name="district_id" id="parking_lot_district_id" class="form-control">
             <% @districts.each do |d|  %>
                 <option value="<%= d.id %>" <%if d.id == @default %> selected='true' <% end %>  ><%= d.description %></option>
@@ -11,42 +79,45 @@
     </div>
     
     <div class="form-group">
-    <label class="" for="date">DATE</label>
-    <input class="form-control" type="date" name="date" id="date" required="true">
+    <label class="" for="date">Fecha</label>
+    <input class="form-control" type="date" name="date" id="date" required="true" value="<%= Date.today  %>">
     </div>   
     
   
     <div class="form-group">
-    <label class="" for="start_time">start time</label>
-    <input class="form-control" type="time" name="start_time" id="start_time" required="true">
+    <label class="" for="start_time">Desde</label>
+    <input class="form-control" type="time" name="start_time" id="start_time" required="true" value="08:00">
     </div>    
     
     <div class="form-group">
-    <label class="" for="end_time">start time</label>
-    <input  class="form-control" type="time" name="end_time" id="end_time" required="true">
+    <label class="" for="end_time">Hasta</label>
+    <input  class="form-control" type="time" name="end_time" id="end_time" required="true" value="10:00">
     </div>
-  
   </br>
-    
     <div class="checkbox">
-            <label for="cameras">Has security cameras
+            <label for="cameras">
             <input name="cameras" type="checkbox" value="1"  id="cameras">   
+            con cámaras de seguridad
             </label>
-    </div>    
+    </div>
+    </br>
     <div class="checkbox">
-            <label for="alarms">Has security alarms
+            <label for="alarms">
             <input name="alarms" type="checkbox" value="1"  id="alarms">   
+            Con alarmas de seguidad
             </label>
-    </div>    
+    </div>
+    </br>
     <div class="checkbox">
-            <label for="persons">Has security persons
+            <label for="persons">
             <input name="persons" type="checkbox" value="1"  id="persons">   
+            Con personal de seguridad
             </label>
     </div>
   
   </br>
   </br>
-    <button type="submit" class="btn btn-info" >Dentré suerte</button>
+    <button type="submit" class="btn btn-info" >Buscar</button>
 </form>
 
-</br>
+-->

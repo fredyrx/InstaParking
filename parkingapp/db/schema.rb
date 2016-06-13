@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160611042042) do
+ActiveRecord::Schema.define(version: 20160612214446) do
 
   create_table "districts", force: :cascade do |t|
     t.string "description", limit: 255
@@ -42,6 +42,22 @@ ActiveRecord::Schema.define(version: 20160611042042) do
   add_index "parking_lots", ["district_id"], name: "index_parking_lots_on_district_id", using: :btree
   add_index "parking_lots", ["user_id"], name: "index_parking_lots_on_user_id", using: :btree
 
+  create_table "rents", force: :cascade do |t|
+    t.date     "date"
+    t.time     "start_time"
+    t.time     "end_time"
+    t.integer  "total_minutes",  limit: 4
+    t.float    "total_time",     limit: 24
+    t.float    "total_price",    limit: 24
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "user_id",        limit: 4
+    t.integer  "parking_lot_id", limit: 4
+  end
+
+  add_index "rents", ["parking_lot_id"], name: "index_rents_on_parking_lot_id", using: :btree
+  add_index "rents", ["user_id"], name: "index_rents_on_user_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
     t.string   "encrypted_password",     limit: 255, default: "", null: false
@@ -64,4 +80,6 @@ ActiveRecord::Schema.define(version: 20160611042042) do
 
   add_foreign_key "parking_lots", "districts"
   add_foreign_key "parking_lots", "users"
+  add_foreign_key "rents", "parking_lots"
+  add_foreign_key "rents", "users"
 end
